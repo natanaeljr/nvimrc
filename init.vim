@@ -25,12 +25,14 @@ Plug 'rakr/vim-one'
 Plug 'altercation/vim-colors-solarized'
 Plug 'kadekillary/subtle_solo'
 Plug 'crusoexia/vim-monokai'
+Plug 'crusoexia/vim-dracula'
 Plug 'ErichDonGubler/vim-sublime-monokai'
 Plug 'nightsense/nemo'
 Plug 'kadekillary/skull-vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'encody/nvim'
 Plug 'AlessandroYorba/Despacio'
+Plug 'blueshirts/darcula'
 call plug#end()
 
 " NERDTree
@@ -54,12 +56,15 @@ let g:deoplete#enable_at_startup = 1
 
 set cursorline
 
+set guicursor=
+"set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175
+
 set clipboard=unnamedplus
 
-set termguicolors
+"set termguicolors
 set background=dark
-colorscheme gruvbox
-let g:airline_theme='dark'
+colorscheme darcula
+let g:airline_theme='atomic'
 
 " use spaces instead of tabs
 " set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
@@ -175,11 +180,3 @@ let g:airline#extensions#tabline#fnamemod=':t'
 " Airline
 let g:airline_powerline_fonts = 1
 
-set guicursor=
-"set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175
-
-let &t_SI = "<Esc>[6 q"
-
-let &t_SR = "<Esc>[4 q"
-
-let &t_EI = "<Esc>[2 q"
