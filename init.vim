@@ -11,7 +11,6 @@ Plug 'honza/vim-snippets'
 Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'rhysd/vim-clang-format'
 Plug 'tpope/vim-fugitive' 
 Plug 'airblade/vim-gitgutter'
 Plug 'easymotion/vim-easymotion'
@@ -56,8 +55,8 @@ let g:deoplete#enable_at_startup = 1
 
 set cursorline
 
-set guicursor=
-"set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175
+"set guicursor=
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175
 
 set clipboard=unnamedplus
 
@@ -121,10 +120,6 @@ set inccommand=split
 "auto change working directory to opened dir
 set autochdir
 
-" Clang Format
-map <leader>i :pyf /usr/share/clang/clang-format.py -assume-filename=/home/nanter/.dotfiles/.clang-format<cr>
-imap <leader>i <c-o>:pyf /usr/share/clang/clang-format.py -assume-filename=/home/nanter/.dotfiles/.clang-format<cr>
-
 "define custom control key
 let mapleader="\\"
 
@@ -146,6 +141,11 @@ nnoremap <A-j> ddp
 nnoremap <A-k> ddkP
 nnoremap <A-J> yyp
 nnoremap <A-K> yyP
+
+vnoremap <A-j> dp
+vnoremap <A-k> dkP
+vnoremap <A-J> dPP
+vnoremap <A-K> dPP
 
 "nnoremap <A-k> dd <BAR> k <BAR> P
 "nnoremap <A-j> dd p
