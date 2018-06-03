@@ -32,7 +32,15 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'encody/nvim'
 Plug 'AlessandroYorba/Despacio'
 Plug 'blueshirts/darcula'
+Plug 'Yggdroot/indentLine'
+Plug 'Valloric/YouCompleteMe'
+Plug 'Chiel92/vim-autoformat'
 call plug#end()
+
+" Indent Line
+let g:indentLine_color_tty_light = 7 " (default: 4)
+let g:indentLine_color_dark = 1 " (default: 2)
+let g:indentLine_char = '│' " You can also use one of ¦, ┆, │, ⎸, or ▏ to display more beautiful lines.  
 
 " NERDTree
 " Close vim if the only window left open is a NERDTree
@@ -42,6 +50,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled=1
 
+" YouCompleteMe
+let g:ycm_server_python_interpreter="/usr/bin/python2"
 
 " UtilSnips
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -51,7 +61,8 @@ let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips'
 
 " activate deoplete
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
+let g:deoplete#disable_auto_complete = 1 " set to 1 if you want to disable autocomplete
 
 set cursorline
 
@@ -62,8 +73,10 @@ set clipboard=unnamedplus
 
 "set termguicolors
 set background=dark
-colorscheme darcula
-let g:airline_theme='atomic'
+"colorscheme darcula
+"let g:airline_theme='atomic'
+colorscheme monokai
+let g:airline_theme='dark'
 
 " use spaces instead of tabs
 " set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
@@ -87,16 +100,16 @@ match OverLength /\%100v.\+/
 autocmd WinEnter * match OverLength /\%100v.\+/
 
 " Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+nnoremap <Left> :echoe "Fuck you! Use 'h' idiot."<CR>
+nnoremap <Right> :echoe "Fuck you! Use 'l' idiot."<CR>
+nnoremap <Up> :echoe "Fuck you! Use 'k' idiot."<CR>
+nnoremap <Down> :echoe "Fuck you! Use 'j' idiot."<CR>
 
 " Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+nnoremap <C-J> <C-w>j
+nnoremap <C-K> <C-w>k
+nnoremap <C-H> <C-w>h
+nnoremap <C-L> <C-w>l
 
 " Move between linting errors
 nnoremap ]r :ALENextWrap<CR>
@@ -127,13 +140,15 @@ let mapleader="\\"
 nnoremap <leader>; A;<esc>
 nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
-nnoremap <leader>i :ClangFormat<cr>
+nnoremap <leader>ea :e ~/.config/alacritty/alacritty.yml<cr>
+
+nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 nnoremap <leader>p :Files<cr>
 nnoremap <leader>f :Ag<space>
 
 nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>m :NERDTreeFocus<CR>
 
 nnoremap <C-s> :w<cr>
 
