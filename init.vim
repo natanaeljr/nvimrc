@@ -66,7 +66,6 @@ let g:deoplete#disable_auto_complete = 1 " set to 1 if you want to disable autoc
 
 set cursorline
 
-"set guicursor=
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175
 
 set clipboard=unnamedplus
