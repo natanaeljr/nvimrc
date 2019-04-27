@@ -219,7 +219,7 @@ set inccommand=split
 "set autochdir
 
 "define custom control key
-let mapleader="\\"
+let mapleader=" "
 
 """Costum Keymaps"""
 nnoremap <leader>; A;<esc>
