@@ -155,10 +155,10 @@ set background=dark
 "colorscheme darcula
 "let g:airline_theme='atomic'
 "colorscheme monokai
-"let g:airline_theme='dark'
+let g:airline_theme='dark'
 let ayucolor="mirage"   " dark, mirage or light
 colorscheme ayu
-let g:airline_theme='ayu_mirage'
+"let g:airline_theme='ayu_mirage'
 
 " use spaces instead of tabs
 " set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
@@ -225,6 +225,7 @@ let mapleader=" "
 nnoremap <leader>; A;<esc>
 nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
+nnoremap <leader>sb :set scb!<CR>
 
 "nnoremap <silent><C-J> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 "nnoremap <silent><C-K> :set paste<CR>m`O<Esc>``:set nopaste<CR>
@@ -280,5 +281,5 @@ let g:airline#extensions#tabline#enabled=1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod=':t'
 " Airline
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 
