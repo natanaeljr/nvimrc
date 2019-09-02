@@ -26,6 +26,7 @@ endif
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.config/nvim/plugged')
+Plug 'sheerun/vim-polyglot'             " A collection of language packs
 Plug 'PotatoesMaster/i3-vim-syntax'     " i3 syntax highlight
 Plug 'ctrlpvim/ctrlp.vim'               " Fuzzy finder: file, buffer, mru, tag
 Plug 'octol/vim-cpp-enhanced-highlight' " Enhanced C and C++ syntax highlighting
@@ -61,13 +62,17 @@ syntax on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set termguicolors
+set t_Co=256
+if has('nvim') && has('termguicolors')
+    set termguicolors
+endif
 set background=dark
 colorscheme edge
 
 " Disable background colors
 highlight Normal ctermbg=NONE guibg=NONE
 highlight LineNr ctermbg=NONE guibg=NONE
+highlight NonText ctermbg=NONE guibg=NONE
 highlight SignColumn ctermbg=NONE guibg=NONE
 let g:gitgutter_override_sign_column_highlight = 0 " Needed for GitGutter
 
