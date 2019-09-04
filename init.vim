@@ -29,7 +29,9 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'sheerun/vim-polyglot'             " A collection of language packs
 Plug 'PotatoesMaster/i3-vim-syntax'     " i3 syntax highlight
 Plug 'ctrlpvim/ctrlp.vim'               " Fuzzy finder: file, buffer, mru, tag
-Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] } " Enhanced C and C++ syntax highlighting
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }      " Enhanced C and C++ syntax highlighting
+Plug 'evedovelli/rst-robotframework-syntax-vim', { 'for': 'rstrobot' } " Extends RST syntax
+
 " Colorschemes
 Plug 'w0ng/vim-hybrid'              " colorscheme hybrid
 Plug 'sainnhe/edge'                 " colorscheme edge
