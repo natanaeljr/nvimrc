@@ -32,8 +32,9 @@ Plug 'ctrlpvim/ctrlp.vim'               " Fuzzy finder: file, buffer, mru, tag
 Plug 'octol/vim-cpp-enhanced-highlight' " Enhanced C and C++ syntax highlighting
 " Colorschemes
 Plug 'w0ng/vim-hybrid'              " colorscheme hybrid
-Plug 'sainnhe/archived-colors'      " colorscheme cryslominsa
 Plug 'sainnhe/edge'                 " colorscheme edge
+Plug 'rakr/vim-one'                 " colorscheme one
+Plug 'lifepillar/vim-solarized8'    " colorscheme solarized8
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -70,11 +71,11 @@ set background=dark
 colorscheme edge
 
 " Disable background colors
-highlight Normal ctermbg=NONE guibg=NONE
-highlight LineNr ctermbg=NONE guibg=NONE
-highlight NonText ctermbg=NONE guibg=NONE
-highlight SignColumn ctermbg=NONE guibg=NONE
-let g:gitgutter_override_sign_column_highlight = 0 " Needed for GitGutter
+"highlight Normal ctermbg=NONE guibg=NONE
+"highlight LineNr ctermbg=NONE guibg=NONE
+"highlight NonText ctermbg=NONE guibg=NONE
+"highlight SignColumn ctermbg=NONE guibg=NONE
+"let g:gitgutter_override_sign_column_highlight = 0 " Needed for GitGutter
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP Plugin
