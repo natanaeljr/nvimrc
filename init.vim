@@ -5,39 +5,45 @@
 "   \_/ |_|_| |_| |_|_|  \___|
 "
 
-let mapleader='\\'
+let mapleader='\'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Setup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Download a plugin manager
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
-    echo "Downloading junegunn/vim-plug to manage plugins..."
-    silent !mkdir -p ~/.config/nvim/autoload/
-    silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ~/.config/nvim/autoload/plug.vim
+  echo "Downloading junegunn/vim-plug to manage plugins..."
+  silent !mkdir -p ~/.config/nvim/autoload/
+  silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ~/.config/nvim/autoload/plug.vim
 endif
 " Link vim config with nvim config
 if ! has('nvim') && ! filereadable(expand('~/.vim/autoload/plug.vim'))
-    silent !mv ~/.vim ~/.vim-backup
-    silent !ln -s ~/.config/nvim ~/.vim
+  silent !mv ~/.vim ~/.vim-backup
+  silent !ln -s ~/.config/nvim ~/.vim
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.config/nvim/plugged')
-Plug 'sheerun/vim-polyglot'             " A collection of language packs
-Plug 'PotatoesMaster/i3-vim-syntax'     " i3 syntax highlight
-Plug 'ctrlpvim/ctrlp.vim'               " Fuzzy finder: file, buffer, mru, tag
-Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }      " Enhanced C and C++ syntax highlighting
-Plug 'evedovelli/rst-robotframework-syntax-vim', { 'for': 'rstrobot' } " Extends RST syntax
+Plug 'sheerun/vim-polyglot'                                             " A collection of language packs
+Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }                    " i3 syntax highlight
+Plug 'ctrlpvim/ctrlp.vim'                                               " Fuzzy finder: file, buffer, mru, tag
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }        " Enhanced C and C++ syntax highlighting
+Plug 'evedovelli/rst-robotframework-syntax-vim', { 'for': 'rstrobot' }  " Extends RST syntax
 
 " Colorschemes
 Plug 'w0ng/vim-hybrid'              " colorscheme hybrid
 Plug 'sainnhe/edge'                 " colorscheme edge
 Plug 'rakr/vim-one'                 " colorscheme one
 Plug 'lifepillar/vim-solarized8'    " colorscheme solarized8
+Plug 'NLKNguyen/papercolor-theme'   " colorscheme PaperColor
 call plug#end()
+
+" Install plugins
+nnoremap <leader>pi  :PlugInstall<CR>
+" Clean plugins
+nnoremap <leader>pc  :PlugClean<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab
@@ -53,9 +59,23 @@ set number relativenumber  " Display line numbers
 set nowrap                 " Wrap/nowrap lines
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Search
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Clear search highlight
+nnoremap <leader>/  :nohlsearch<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Copy/Paste/Cut
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set clipboard=unnamedplus  " Default clipboard register (+ for X Window)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Buffers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Allow to unload or abandon modified buffers by hiding them
+set hidden
+" Save/Write buffer
+nnoremap <C-s>  :write<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax Highlighting
@@ -67,10 +87,10 @@ syntax on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256
 if has('nvim') && has('termguicolors')
-    set termguicolors
+  set termguicolors
 endif
-set background=dark
-colorscheme edge
+set background=light
+colorscheme PaperColor
 
 " Disable background colors
 "highlight Normal ctermbg=NONE guibg=NONE
@@ -78,6 +98,18 @@ colorscheme edge
 "highlight NonText ctermbg=NONE guibg=NONE
 "highlight SignColumn ctermbg=NONE guibg=NONE
 "let g:gitgutter_override_sign_column_highlight = 0 " Needed for GitGutter
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VimRC
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Edit and reload the config file
+if has('nvim')
+  nnoremap <leader>ev  :edit ~/.config/nvim/init.vim<CR>
+  nnoremap <leader>sv  :source ~/.config/nvim/init.vim<CR>
+else
+  nnoremap <leader>ev  :edit ~/.vimrc<CR>
+  nnoremap <leader>sv  :source ~/.vimrc<CR>
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP Plugin
