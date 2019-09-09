@@ -206,3 +206,9 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1 " faster, do not cover all cases
 "let g:cpp_experimental_template_highlight = 1 " slower, works in most cases
 let g:cpp_concepts_highlight = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Python
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Format with autopep8
+autocmd FileType python nnoremap <buffer> <C-I> :silent !autopep8 --max-line-length 100 -i %<CR>:silent e<CR>
