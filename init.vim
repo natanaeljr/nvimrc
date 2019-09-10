@@ -45,12 +45,35 @@ Plug 'sainnhe/edge'                                                     " colors
 Plug 'rakr/vim-one'                                                     " colorscheme one
 Plug 'lifepillar/vim-solarized8'                                        " colorscheme solarized8
 Plug 'NLKNguyen/papercolor-theme'                                       " colorscheme PaperColor
+Plug 'morhetz/gruvbox'                                                  " colorscheme gruvbox
 call plug#end()
 
 " Install new plugins
 nnoremap <leader>pi  :PlugInstall<CR>
 " Clean unused plugins
 nnoremap <leader>pc  :PlugClean<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntax Highlighting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax on
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Colorscheme
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set t_Co=256
+if has('nvim') && has('termguicolors')
+  set termguicolors
+endif
+set background=dark
+colorscheme edge
+
+" Disable background colors
+"highlight Normal ctermbg=NONE guibg=NONE
+"highlight LineNr ctermbg=NONE guibg=NONE
+"highlight NonText ctermbg=NONE guibg=NONE
+"highlight SignColumn ctermbg=NONE guibg=NONE
+"let g:gitgutter_override_sign_column_highlight = 0 " Needed for GitGutter
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab
@@ -143,28 +166,6 @@ nnoremap <silent> <A-=>  :wincmd =<CR>
 " Split horizontally/vertically the current buffer
 nnoremap <silent> <C-i>  :split<CR>:wincmd j<CR>
 nnoremap <silent> <C-o>  :vsplit<CR>:wincmd l<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntax Highlighting
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax on
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Colorscheme
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set t_Co=256
-if has('nvim') && has('termguicolors')
-  set termguicolors
-endif
-set background=light
-colorscheme PaperColor
-
-" Disable background colors
-"highlight Normal ctermbg=NONE guibg=NONE
-"highlight LineNr ctermbg=NONE guibg=NONE
-"highlight NonText ctermbg=NONE guibg=NONE
-"highlight SignColumn ctermbg=NONE guibg=NONE
-"let g:gitgutter_override_sign_column_highlight = 0 " Needed for GitGutter
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VimRC

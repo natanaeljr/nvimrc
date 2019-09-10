@@ -1,2 +1,2 @@
-Guifont DejaVu Sans Mono:h9
+Guifont DejaVu Sans Mono:h10
 
