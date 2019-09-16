@@ -109,29 +109,31 @@ set hidden
 nnoremap <C-s>       :write<CR>
 " New blank buffer
 nnoremap <A-n>       :enew<CR>
-" Navigate buffers
-nnoremap <Tab>       :bnext<CR>:buffers<CR>
-nnoremap <S-Tab>     :bprevious<CR>:buffers<CR>
 " List buffers
 nnoremap <leader>bl  :buffers<CR>
 " Go to buffer
+nnoremap <S-Tab>     :buffers<CR>:b<space>
 nnoremap <leader>bb  :buffers<CR>:b<space>
 " Go to last buffer
-nnoremap <leader>b$  :blast<CR>
+nnoremap <leader>b$  :WintabsLast<CR>
 " Go to first buffer
-nnoremap <leader>b0  :bfirst<CR>
+nnoremap <leader>b0  :WintabsFirst<CR>
 " Go to next buffer
-nnoremap <leader>bn  :bnext<CR>
+nnoremap )           :WintabsNext<CR>
+nnoremap <leader>bn  :WintabsNext<CR>
 " Go to previous buffer
-nnoremap <leader>bp  :bprevious<CR>
+nnoremap (           :WintabsPrevious<CR>
+nnoremap <leader>bp  :WintabsPrevious<CR>
 " Delete specific buffer
 nnoremap <leader>bd  :buffers<CR>:bd<space>
-" Delete current buffer
-nnoremap <leader>b%  :bdelete<CR>
+" Close current buffer
+nnoremap <leader>b%  :WintabsClose<CR>
 " Delete current buffer discarding changes
 nnoremap <leader>b!  :bdelete!<CR>
 " Go to last abandoned buffer
 nnoremap <leader>b#  :b#<CR>
+" Bring all buffers to current window
+nnoremap <leader>ba  :WintabsAll<CR>
 " Map buffer numbers to <leader>bN
 let c = 1
 while c <= 9
