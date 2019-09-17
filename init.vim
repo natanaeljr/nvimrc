@@ -124,6 +124,9 @@ nnoremap <leader>bn  :WintabsNext<CR>
 " Go to previous buffer
 nnoremap (           :WintabsPrevious<CR>
 nnoremap <leader>bp  :WintabsPrevious<CR>
+" Move buffers in the wintabs buffer list
+nnoremap <C-0>       :WintabsMove 1<CR>
+nnoremap <C-9>       :WintabsMove -1<CR>
 " Delete specific buffer
 nnoremap <leader>bd  :buffers<CR>:bd<space>
 " Close current buffer
@@ -170,6 +173,15 @@ nnoremap <silent> <C-i>  :split<CR>:wincmd j<CR>
 nnoremap <silent> <C-o>  :vsplit<CR>:wincmd l<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" netwr
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:netrw_banner = 0        " Do not show netrw banner
+let g:netrw_liststyle = 3     " List style: thin, long, wide, and tree listings
+let g:netrw_browse_split = 4  " Open files in previous window
+let g:netrw_altv = 0          " Open files in right split
+let g:netrw_winsize = 25      " Initial buffer size in percentage
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VimRC
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Edit and reload the config file
@@ -198,7 +210,8 @@ let g:ctrlp_working_path_mode='rc'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Wintabs Plugin                                         (help wintabs-options)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:wintabs_display='statusline'
+let g:wintabs_display='statusline'  " Use the status line to display the buffer list
+let g:wintabs_reverse_order=1       " Add new buffers to the beginning of the wintabs list
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim-Cpp-Enhanced-Highlight Plugin
