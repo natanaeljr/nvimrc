@@ -109,6 +109,8 @@ set hidden
 nnoremap <C-s>       :write<CR>
 " New blank buffer
 nnoremap <A-n>       :enew<CR>
+" Search buffers
+noremap  <C-b>       :CtrlPBuffer<CR>
 " List buffers
 nnoremap <leader>bl  :buffers<CR>
 " Go to buffer
@@ -205,7 +207,7 @@ let g:ctrlp_cmd='CtrlP'
 " 'a' - like 'c', but only applies when the current working directory outside
 "       of CtrlP isn't a direct ancestor of the directory of the current file.
 " '0' - or '' (empty string) - disable this feature.
-let g:ctrlp_working_path_mode='rc'
+let g:ctrlp_working_path_mode='ra'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Wintabs Plugin                                         (help wintabs-options)
