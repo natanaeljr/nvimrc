@@ -32,6 +32,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Tools
 Plug 'ctrlpvim/ctrlp.vim'                                               " Fuzzy finder: file, buffer, mru, tag
 Plug 'zefei/vim-wintabs'                                                " Modern buffer manager
+Plug 'djoshea/vim-autoread'                                             " Auto reload files changed externally
 
 " Syntax
 Plug 'sheerun/vim-polyglot'                                             " A collection of language packs
