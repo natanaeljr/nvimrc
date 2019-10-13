@@ -34,6 +34,10 @@ Plug 'ctrlpvim/ctrlp.vim'                                               " Fuzzy 
 Plug 'zefei/vim-wintabs'                                                " Modern buffer manager
 Plug 'djoshea/vim-autoread'                                             " Auto reload files changed externally
 
+if has('nvim-0.4') || has('patch-8.1.1967')
+    Plug 'liuchengxu/vim-clap'                                          " Generic interactive finder and dispatcher
+endif
+
 " Syntax
 Plug 'sheerun/vim-polyglot'                                             " A collection of language packs
 Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }                    " i3 syntax highlight
@@ -209,6 +213,15 @@ let g:ctrlp_cmd='CtrlP'
 "       of CtrlP isn't a direct ancestor of the directory of the current file.
 " '0' - or '' (empty string) - disable this feature.
 let g:ctrlp_working_path_mode='ra'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Clap Plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>cc  :Clap colors<CR>
+nnoremap <leader>cb  :Clap buffers<CR>
+nnoremap <leader>cg  :Clap grep<CR>
+nnoremap <leader>cf  :Clap files<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Wintabs Plugin                                         (help wintabs-options)
