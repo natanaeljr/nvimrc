@@ -34,6 +34,7 @@ Plug 'ctrlpvim/ctrlp.vim'                                               " Fuzzy 
 Plug 'zefei/vim-wintabs'                                                " Modern buffer manager
 Plug 'djoshea/vim-autoread'                                             " Auto reload files changed externally
 Plug 'neoclide/coc.nvim', {'branch': 'release'}                         " Intellisense engine
+Plug 'jackguo380/vim-lsp-cxx-highlight'                                 " C/C++/ObjC semantic highlighting with LSP
 
 if has('nvim-0.4') || has('patch-8.1.1967')
     Plug 'liuchengxu/vim-clap'                                          " Generic interactive finder and dispatcher
@@ -49,6 +50,7 @@ Plug 'evedovelli/rst-robotframework-syntax-vim', { 'for': 'rstrobot' }  " Extend
 Plug 'w0ng/vim-hybrid'                                                  " colorscheme hybrid
 Plug 'sainnhe/edge'                                                     " colorscheme edge
 Plug 'rakr/vim-one'                                                     " colorscheme one
+Plug 'flrnd/plastic.vim'                                                " colorscheme plastic
 Plug 'lifepillar/vim-solarized8'                                        " colorscheme solarized8
 Plug 'NLKNguyen/papercolor-theme'                                       " colorscheme PaperColor
 Plug 'morhetz/gruvbox'                                                  " colorscheme gruvbox
@@ -252,3 +254,24 @@ autocmd FileType python nnoremap <buffer> <C-I> :silent !autopep8 --max-line-len
 inoremap <silent><expr> <C-space> coc#refresh()
 " Use <cr> to confirm completion
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+
+" Go to definition
+nmap gd <Plug>(coc-definition)
+" Go to implementation
+nmap gi <Plug>(coc-implementation)
+" Find references
+nmap gr <Plug>(coc-references)
+" Show documentation
+nmap gh <Plug>(coc-action-doHover)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-lsp-cxx-highlight Plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+highlight LspCxxHlSymClass          ctermfg=80  guifg=#56b6c2
+highlight LspCxxHlSymStruct         ctermfg=80  guifg=#56b6c2
+highlight LspCxxHlSymTypeAlias      ctermfg=80  guifg=#56b6c2
+highlight LspCxxHlSymEnum           ctermfg=50  guifg=#56c2b0
+highlight LspCxxHlSymEnumMember     ctermfg=209 guifg=#d19a66
+highlight LspCxxHlSymConstant       ctermfg=111 guifg=#89b6ff
+highlight LspCxxHlSymNamespace      ctermfg=7   guifg=#a9b2c3
+highlight LspCxxHlSymOperator       ctermfg=203 guifg=#e06c75
