@@ -33,6 +33,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'                                               " Fuzzy finder: file, buffer, mru, tag
 Plug 'zefei/vim-wintabs'                                                " Modern buffer manager
 Plug 'djoshea/vim-autoread'                                             " Auto reload files changed externally
+Plug 'neoclide/coc.nvim', {'branch': 'release'}                         " Intellisense engine
 
 if has('nvim-0.4') || has('patch-8.1.1967')
     Plug 'liuchengxu/vim-clap'                                          " Generic interactive finder and dispatcher
@@ -222,11 +223,10 @@ nnoremap <leader>cb  :Clap buffers<CR>
 nnoremap <leader>cg  :Clap grep<CR>
 nnoremap <leader>cf  :Clap files<CR>
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Wintabs Plugin                                         (help wintabs-options)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:wintabs_display='statusline'  " Use the status line to display the buffer list
+let g:wintabs_display='tabline'  " Use the status line to display the buffer list
 let g:wintabs_reverse_order=1       " Add new buffers to the beginning of the wintabs list
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -244,3 +244,11 @@ let g:cpp_concepts_highlight = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Format with autopep8
 autocmd FileType python nnoremap <buffer> <C-I> :silent !autopep8 --max-line-length 100 -i %<CR>:silent e<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Coc Plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use <c-space> for trigger completion
+inoremap <silent><expr> <C-space> coc#refresh()
+" Use <cr> to confirm completion
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
