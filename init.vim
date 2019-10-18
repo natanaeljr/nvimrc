@@ -33,6 +33,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'                                               " Fuzzy finder: file, buffer, mru, tag
 Plug 'zefei/vim-wintabs'                                                " Modern buffer manager
 Plug 'djoshea/vim-autoread'                                             " Auto reload files changed externally
+Plug 'Yggdroot/indentLine'                                              " Display the indention levels with vertical lines
 Plug 'neoclide/coc.nvim', {'branch': 'release'}                         " Intellisense engine
 Plug 'jackguo380/vim-lsp-cxx-highlight'                                 " C/C++/ObjC semantic highlighting with LSP
 
@@ -74,7 +75,7 @@ if has('nvim') && has('termguicolors')
   set termguicolors
 endif
 set background=dark
-colorscheme edge
+colorscheme plastic
 
 " Disable background colors
 "highlight Normal ctermbg=NONE guibg=NONE
@@ -91,11 +92,14 @@ set shiftwidth=4    " One indentation level width
 set expandtab       " Use spaces instead of tabs
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Lines
+" Editing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set cursorline             " Highlight current line
-set nowrap                 " Wrap/nowrap lines
-set number relativenumber  " Display line numbers
+set cursorline              " Highlight current line
+set nowrap                  " Wrap/nowrap lines
+set number relativenumber   " Display line numbers
+set mouse=nv                " Enable mouse support in Normal and Visual mode
+set scrolloff=1             " Always show at least one line above/below the cursor
+set sidescrolloff=5         " Always show at least one line left/right of the cursor
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search
@@ -189,7 +193,7 @@ let g:netrw_banner = 0        " Do not show netrw banner
 let g:netrw_liststyle = 3     " List style: thin, long, wide, and tree listings
 let g:netrw_browse_split = 4  " Open files in previous window
 let g:netrw_altv = 0          " Open files in right split
-let g:netrw_winsize = 25      " Initial buffer size in percentage
+let g:netrw_winsize = 15      " Initial buffer size in percentage
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VimRC
@@ -228,7 +232,7 @@ nnoremap <leader>cf  :Clap files<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Wintabs Plugin                                         (help wintabs-options)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:wintabs_display='tabline'  " Use the status line to display the buffer list
+let g:wintabs_display='statusline'  " Use the status line to display the buffer list
 let g:wintabs_reverse_order=1       " Add new buffers to the beginning of the wintabs list
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -246,6 +250,11 @@ let g:cpp_concepts_highlight = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Format with autopep8
 autocmd FileType python nnoremap <buffer> <C-I> :silent !autopep8 --max-line-length 100 -i %<CR>:silent e<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" indentLine Plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:indentLine_char = '┊'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Coc Plugin
@@ -270,8 +279,11 @@ nmap gh <Plug>(coc-action-doHover)
 highlight LspCxxHlSymClass          ctermfg=80  guifg=#56b6c2
 highlight LspCxxHlSymStruct         ctermfg=80  guifg=#56b6c2
 highlight LspCxxHlSymTypeAlias      ctermfg=80  guifg=#56b6c2
+highlight LspCxxHlSymTypeParameter  ctermfg=80  guifg=#56b6c2
 highlight LspCxxHlSymEnum           ctermfg=50  guifg=#56c2b0
 highlight LspCxxHlSymEnumMember     ctermfg=209 guifg=#d19a66
 highlight LspCxxHlSymConstant       ctermfg=111 guifg=#89b6ff
+highlight LspCxxHlSymVariable       ctermfg=254 guifg=#d4d7d9
 highlight LspCxxHlSymNamespace      ctermfg=7   guifg=#a9b2c3
 highlight LspCxxHlSymOperator       ctermfg=203 guifg=#e06c75
+highlight LspCxxHlSymMacro          ctermfg=209 guifg=#d19a66
