@@ -63,6 +63,15 @@ nnoremap <leader>pi  :PlugInstall<CR>
 nnoremap <leader>pc  :PlugClean<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Command
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Shell
+set shell=/bin/zsh
+" Enables a menu at the bottom of the window
+set wildmenu
+set wildmode=list:longest,full
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax Highlighting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
@@ -75,7 +84,7 @@ if has('nvim') && has('termguicolors')
   set termguicolors
 endif
 set background=dark
-colorscheme plastic
+colorscheme edge
 
 " Disable background colors
 "highlight Normal ctermbg=NONE guibg=NONE
@@ -100,10 +109,29 @@ set number relativenumber   " Display line numbers
 set mouse=nv                " Enable mouse support in Normal and Visual mode
 set scrolloff=1             " Always show at least one line above/below the cursor
 set sidescrolloff=5         " Always show at least one line left/right of the cursor
+set notimeout               " Remove timeout for partially typed commands
+set list                    " Make whitespace characters visible
+set listchars=tab:»·,trail:•
+
+" Beginning and end of line
+inoremap <C-a> <home>
+inoremap <C-e> <end>
+cnoremap <C-a> <home>
+cnoremap <C-e> <end>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Search
+" Search/Substitute
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Case insensitive searching
+set ignorecase
+" Automatically switch to case sensitive if used any capitals
+set smartcase
+
+if has('nvim')
+    " Substitute live preview
+    set inccommand=nosplit
+endif
+
 " Clear search highlight
 nnoremap <leader>/  :nohlsearch<CR>
 
@@ -220,6 +248,9 @@ let g:ctrlp_cmd='CtrlP'
 "       of CtrlP isn't a direct ancestor of the directory of the current file.
 " '0' - or '' (empty string) - disable this feature.
 let g:ctrlp_working_path_mode='ra'
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_show_hidden =1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clap Plugin
