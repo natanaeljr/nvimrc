@@ -114,10 +114,10 @@ set list                    " Make whitespace characters visible
 set listchars=tab:»·,trail:•
 
 " Beginning and end of line
-inoremap <C-a> <home>
-inoremap <C-e> <end>
-cnoremap <C-a> <home>
-cnoremap <C-e> <end>
+inoremap <C-i> <home>
+inoremap <C-a> <end>
+cnoremap <C-i> <home>
+cnoremap <C-a> <end>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search/Substitute
