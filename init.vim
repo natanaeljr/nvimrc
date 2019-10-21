@@ -51,7 +51,7 @@ Plug 'evedovelli/rst-robotframework-syntax-vim', { 'for': 'rstrobot' }  " Extend
 Plug 'w0ng/vim-hybrid'                                                  " colorscheme hybrid
 Plug 'sainnhe/edge'                                                     " colorscheme edge
 Plug 'rakr/vim-one'                                                     " colorscheme one
-Plug 'flrnd/plastic.vim'                                                " colorscheme plastic
+Plug 'natanaeljr/plastic.vim'                                           " colorscheme plastic
 Plug 'lifepillar/vim-solarized8'                                        " colorscheme solarized8
 Plug 'NLKNguyen/papercolor-theme'                                       " colorscheme PaperColor
 Plug 'morhetz/gruvbox'                                                  " colorscheme gruvbox
