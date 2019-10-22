@@ -36,9 +36,11 @@ Plug 'djoshea/vim-autoread'                                             " Auto r
 Plug 'Yggdroot/indentLine'                                              " Display the indention levels with vertical lines
 Plug 'neoclide/coc.nvim', {'branch': 'release'}                         " Intellisense engine
 Plug 'jackguo380/vim-lsp-cxx-highlight'                                 " C/C++/ObjC semantic highlighting with LSP
+Plug 'francoiscabrol/ranger.vim'                                        " Ranger integration in vim and neovim
 
 if has('nvim-0.4') || has('patch-8.1.1967')
     Plug 'liuchengxu/vim-clap'                                          " Generic interactive finder and dispatcher
+    Plug 'rbgrouleff/bclose.vim'                                        " Deleting a buffer without closing the window (needed for Ranger plugin)
 endif
 
 " Syntax
@@ -112,10 +114,6 @@ set sidescrolloff=5         " Always show at least one line left/right of the cu
 set notimeout               " Remove timeout for partially typed commands
 set list                    " Make whitespace characters visible
 set listchars=tab:»·,trail:•
-
-" Beginning and end of line
-inoremap <C-i> <home>
-inoremap <C-a> <end>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search/Substitute
