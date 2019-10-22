@@ -84,7 +84,7 @@ if has('nvim') && has('termguicolors')
   set termguicolors
 endif
 set background=dark
-colorscheme edge
+colorscheme plastic
 
 " Disable background colors
 "highlight Normal ctermbg=NONE guibg=NONE
@@ -116,8 +116,6 @@ set listchars=tab:»·,trail:•
 " Beginning and end of line
 inoremap <C-i> <home>
 inoremap <C-a> <end>
-cnoremap <C-i> <home>
-cnoremap <C-a> <end>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search/Substitute
@@ -263,7 +261,7 @@ nnoremap <leader>cf  :Clap files<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Wintabs Plugin                                         (help wintabs-options)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:wintabs_display='statusline'  " Use the status line to display the buffer list
+let g:wintabs_display='tabline'  " Use the status line to display the buffer list
 let g:wintabs_reverse_order=1       " Add new buffers to the beginning of the wintabs list
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
