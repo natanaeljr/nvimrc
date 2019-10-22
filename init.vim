@@ -37,6 +37,8 @@ Plug 'Yggdroot/indentLine'                                              " Displa
 Plug 'neoclide/coc.nvim', {'branch': 'release'}                         " Intellisense engine
 Plug 'jackguo380/vim-lsp-cxx-highlight'                                 " C/C++/ObjC semantic highlighting with LSP
 Plug 'francoiscabrol/ranger.vim'                                        " Ranger integration in vim and neovim
+Plug 'tpope/vim-fugitive'                                               " A Git wrapper
+Plug 'airblade/vim-gitgutter'                                           " Git diff in the gutter (sign column) and hunks
 
 if has('nvim-0.4') || has('patch-8.1.1967')
     Plug 'liuchengxu/vim-clap'                                          " Generic interactive finder and dispatcher
@@ -86,7 +88,7 @@ if has('nvim') && has('termguicolors')
   set termguicolors
 endif
 set background=dark
-colorscheme plastic
+colorscheme edge
 
 " Disable background colors
 "highlight Normal ctermbg=NONE guibg=NONE
@@ -314,3 +316,9 @@ highlight LspCxxHlSymVariable       ctermfg=254 guifg=#d4d7d9
 highlight LspCxxHlSymNamespace      ctermfg=7   guifg=#a9b2c3
 highlight LspCxxHlSymOperator       ctermfg=203 guifg=#e06c75
 highlight LspCxxHlSymMacro          ctermfg=209 guifg=#d19a66
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-gitgutter Plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" To use floating/popup windows for hunk previews
+let g:gitgutter_preview_win_floating = 0
