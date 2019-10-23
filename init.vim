@@ -110,10 +110,14 @@ set expandtab       " Use spaces instead of tabs
 set cursorline              " Highlight current line
 set nowrap                  " Wrap/nowrap lines
 set number relativenumber   " Display line numbers
+set signcolumn=yes          " Always show signcolumn
+set updatetime=1000         " Update time which the swap file will be written to disk
+
 set mouse=nv                " Enable mouse support in Normal and Visual mode
 set scrolloff=1             " Always show at least one line above/below the cursor
 set sidescrolloff=5         " Always show at least one line left/right of the cursor
 set notimeout               " Remove timeout for partially typed commands
+
 set list                    " Make whitespace characters visible
 set listchars=tab:»·,trail:•
 
@@ -322,3 +326,11 @@ highlight LspCxxHlSymMacro          ctermfg=209 guifg=#d19a66
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " To use floating/popup windows for hunk previews
 let g:gitgutter_preview_win_floating = 0
+" Don't auto setup any mappings
+let g:gitgutter_map_keys = 0
+" Customize symbols
+let g:gitgutter_sign_added = '▌'
+let g:gitgutter_sign_modified = '▌'
+let g:gitgutter_sign_removed = '▌'
+let g:gitgutter_sign_removed_first_line = '▌'
+let g:gitgutter_sign_modified_removed = '▌'
