@@ -53,7 +53,7 @@ Plug 'evedovelli/rst-robotframework-syntax-vim', { 'for': 'rstrobot' }  " Extend
 
 " Colorschemes
 Plug 'w0ng/vim-hybrid'                                                  " colorscheme hybrid
-Plug 'sainnhe/edge'                                                     " colorscheme edge
+Plug 'natanaeljr/edge'                                                  " colorscheme edge
 Plug 'rakr/vim-one'                                                     " colorscheme one
 Plug 'natanaeljr/plastic.vim'                                           " colorscheme plastic
 Plug 'lifepillar/vim-solarized8'                                        " colorscheme solarized8
