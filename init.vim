@@ -35,7 +35,7 @@ Plug 'zefei/vim-wintabs'                                                " Modern
 Plug 'djoshea/vim-autoread'                                             " Auto reload files changed externally
 Plug 'Yggdroot/indentLine'                                              " Display the indention levels with vertical lines
 Plug 'neoclide/coc.nvim', {'branch': 'release'}                         " Intellisense engine
-Plug 'jackguo380/vim-lsp-cxx-highlight'                                 " C/C++/ObjC semantic highlighting with LSP
+Plug 'jackguo380/vim-lsp-cxx-highlight', { 'for': ['c', 'cpp'] }        " C/C++/ObjC semantic highlighting with LSP
 Plug 'francoiscabrol/ranger.vim'                                        " Ranger integration in vim and neovim
 Plug 'tpope/vim-fugitive'                                               " A Git wrapper
 Plug 'airblade/vim-gitgutter'                                           " Git diff in the gutter (sign column) and hunks
@@ -84,7 +84,7 @@ syntax on
 " Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256
-if has('nvim') && has('termguicolors')
+if has('termguicolors')
   set termguicolors
 endif
 set background=dark
@@ -111,7 +111,7 @@ set cursorline              " Highlight current line
 set nowrap                  " Wrap/nowrap lines
 set number relativenumber   " Display line numbers
 set signcolumn=yes          " Always show signcolumn
-set updatetime=1000         " Update time which the swap file will be written to disk
+set updatetime=500          " Update time which the swap file will be written to disk
 
 set mouse=nv                " Enable mouse support in Normal and Visual mode
 set scrolloff=1             " Always show at least one line above/below the cursor
@@ -279,10 +279,16 @@ let g:cpp_experimental_simple_template_highlight = 1 " faster, do not cover all 
 let g:cpp_concepts_highlight = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" C/C++
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Format with clang-format
+autocmd FileType cpp nnoremap <buffer> <C-m> :w<CR>:silent !clang-format-3.5 -i %<CR>:silent e<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Format with autopep8
-autocmd FileType python nnoremap <buffer> <C-I> :silent !autopep8 --max-line-length 100 -i %<CR>:silent e<CR>
+autocmd FileType python nnoremap <buffer> <C-m> :w<CR>:silent !autopep8 --max-line-length 100 -i %<CR>:silent e<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " indentLine Plugin
@@ -298,13 +304,15 @@ inoremap <silent><expr> <C-space> coc#refresh()
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
 " Go to definition
-nmap gd <Plug>(coc-definition)
+nnoremap <silent> gd   <Plug>(coc-definition)
 " Go to implementation
-nmap gi <Plug>(coc-implementation)
+nnoremap <silent> ge   <Plug>(coc-implementation)
 " Find references
-nmap gr <Plug>(coc-references)
+nnoremap <silent> gr   <Plug>(coc-references)
 " Show documentation
-nmap gh <Plug>(coc-action-doHover)
+nnoremap <silent> gi   :call CocAction('doHover')<CR>
+" Rename a symbol
+nnoremap <silent> <leader>re :call CocAction('rename')<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-lsp-cxx-highlight Plugin
