@@ -249,7 +249,7 @@ let g:ctrlp_cmd='CtrlP'
 " 'a' - like 'c', but only applies when the current working directory outside
 "       of CtrlP isn't a direct ancestor of the directory of the current file.
 " '0' - or '' (empty string) - disable this feature.
-let g:ctrlp_working_path_mode='ra'
+let g:ctrlp_working_path_mode=''
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_show_hidden =1
