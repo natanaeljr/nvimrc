@@ -41,7 +41,6 @@ Plug 'tpope/vim-fugitive'                                               " A Git 
 Plug 'airblade/vim-gitgutter'                                           " Git diff in the gutter (sign column) and hunks
 
 if has('nvim-0.4') || has('patch-8.1.1967')
-    Plug 'liuchengxu/vim-clap'                                          " Generic interactive finder and dispatcher
     Plug 'rbgrouleff/bclose.vim'                                        " Deleting a buffer without closing the window (needed for Ranger plugin)
 endif
 
@@ -79,6 +78,11 @@ set wildmode=list:longest,full
 " Syntax Highlighting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
+" Custom highlight
+syntax match Doxygen '\v\\brief'
+syntax match Doxygen '\v\\param'
+syntax match Doxygen '\v\\return'
+highlight link Doxygen Todo
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colorscheme
@@ -88,7 +92,7 @@ if has('termguicolors')
   set termguicolors
 endif
 set background=dark
-colorscheme edge
+colorscheme plastic
 
 " Disable background colors
 "highlight Normal ctermbg=NONE guibg=NONE
@@ -96,6 +100,20 @@ colorscheme edge
 "highlight NonText ctermbg=NONE guibg=NONE
 "highlight SignColumn ctermbg=NONE guibg=NONE
 "let g:gitgutter_override_sign_column_highlight = 0 " Needed for GitGutter
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" GUI
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if exists('g:fvim_loaded')
+    " Small font size
+    set guifont=-
+    set guifont=-
+    set guifont=-
+    " Ctrl-ScrollWheel for zooming in/out
+    nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
+    nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
+    nnoremap <A-CR> :FVimToggleFullScreen<CR>
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab
@@ -255,14 +273,6 @@ let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_show_hidden =1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Clap Plugin
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>cc  :Clap colors<CR>
-nnoremap <leader>cb  :Clap buffers<CR>
-nnoremap <leader>cg  :Clap grep<CR>
-nnoremap <leader>cf  :Clap files<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Wintabs Plugin                                         (help wintabs-options)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:wintabs_display='tabline'  " Use the status line to display the buffer list
@@ -303,6 +313,8 @@ inoremap <silent><expr> <C-space> coc#refresh()
 " Use <cr> to confirm completion
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
+" Go to declaration
+nnoremap <silent> ga   <Plug>(coc-declaration)
 " Go to definition
 nnoremap <silent> gd   <Plug>(coc-definition)
 " Go to implementation
@@ -313,6 +325,8 @@ nnoremap <silent> gr   <Plug>(coc-references)
 nnoremap <silent> gi   :call CocAction('doHover')<CR>
 " Rename a symbol
 nnoremap <silent> <leader>re :call CocAction('rename')<CR>
+" Refactor a symbol
+nnoremap <silent> <leader>rf :call CocAction('refactor')<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-lsp-cxx-highlight Plugin
