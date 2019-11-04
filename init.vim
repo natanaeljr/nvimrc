@@ -195,6 +195,8 @@ nnoremap <leader>bd  :buffers<CR>:bd<space>
 nnoremap <leader>b%  :WintabsClose<CR>
 " Delete current buffer discarding changes
 nnoremap <leader>b!  :bdelete!<CR>
+" Delete all buffers
+nnoremap <leader>bx  :bufdo bd<CR>
 " Go to last abandoned buffer
 nnoremap <leader>b#  :b#<CR>
 " Bring all buffers to current window
