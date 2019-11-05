@@ -106,9 +106,7 @@ colorscheme plastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if exists('g:fvim_loaded')
     " Small font size
-    set guifont=-
-    set guifont=-
-    set guifont=-
+    set guifont=DejaVuSansMono\ Nerd\ Font:h13
     " Ctrl-ScrollWheel for zooming in/out
     nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
     nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
@@ -138,6 +136,9 @@ set notimeout               " Remove timeout for partially typed commands
 
 set list                    " Make whitespace characters visible
 set listchars=tab:»·,trail:•
+
+" Toggle relative line numbers
+noremap <silent> <F3>   :set number relativenumber!<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search/Substitute
@@ -294,13 +295,13 @@ let g:cpp_concepts_highlight = 1
 " C/C++
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Format with clang-format
-autocmd FileType cpp nnoremap <buffer> <C-m> :w<CR>:silent !clang-format-3.5 -i %<CR>:silent e<CR>
+autocmd FileType cpp nnoremap <silent><buffer> <C-m> :w<CR>:silent !clang-format-3.5 -i %<CR>:silent e<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Format with autopep8
-autocmd FileType python nnoremap <buffer> <C-m> :w<CR>:silent !autopep8 --max-line-length 100 -i %<CR>:silent e<CR>
+autocmd FileType python nnoremap <silent><buffer> <C-m> :w<CR>:silent !autopep8 --max-line-length 100 -i %<CR>:silent e<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " indentLine Plugin
@@ -316,15 +317,23 @@ inoremap <silent><expr> <C-space> coc#refresh()
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
 " Go to declaration
-nnoremap <silent> ga   <Plug>(coc-declaration)
+nnoremap <silent> gf   :call CocAction('jumpDeclaration')<CR>
 " Go to definition
-nnoremap <silent> gd   <Plug>(coc-definition)
+nnoremap <silent> gd   :call CocAction('jumpDefinition')<CR>
 " Go to implementation
-nnoremap <silent> ge   <Plug>(coc-implementation)
+nnoremap <silent> gi   :call CocAction('jumpImplementation')<CR>
 " Find references
-nnoremap <silent> gr   <Plug>(coc-references)
+nnoremap <silent> gr   :call CocAction('jumpReferences')<CR>
 " Show documentation
-nnoremap <silent> gi   :call CocAction('doHover')<CR>
+nnoremap <silent> gk   :call CocAction('doHover')<CR>
+" Show signature help
+nnoremap <silent> gh   :call CocAction('showSignatureHelp')<CR>
+" Toggle source
+nnoremap <silent> go   :call CocAction('toggleSource')<CR>
+" List current document symbols
+nnoremap <silent> gs   :call CocAction('documentSymbols')<CR>
+" List workspace symbols
+nnoremap <silent> gw   :call CocAction('workspaceSymbols')<CR>
 " Rename a symbol
 nnoremap <silent> <leader>re :call CocAction('rename')<CR>
 " Refactor a symbol
@@ -358,3 +367,9 @@ let g:gitgutter_sign_modified = '▌'
 let g:gitgutter_sign_removed = '▌'
 let g:gitgutter_sign_removed_first_line = '▌'
 let g:gitgutter_sign_modified_removed = '▌'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Explorer Coc-Plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Toggle explorer
+nnoremap <silent> ge   :CocCommand explorer --toggle<CR>
