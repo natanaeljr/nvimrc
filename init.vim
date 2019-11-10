@@ -72,7 +72,10 @@ nnoremap <leader>pc  :PlugClean<CR>
 set shell=/bin/zsh
 " Enables a menu at the bottom of the window
 set wildmenu
-set wildmode=list:longest,full
+set wildmode=longest,full
+if has('nvim')
+  set wildoptions=pum  " Wild menu display options
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax Highlighting
