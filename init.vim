@@ -39,6 +39,7 @@ Plug 'jackguo380/vim-lsp-cxx-highlight', { 'for': ['c', 'cpp'] }        " C/C++/
 Plug 'francoiscabrol/ranger.vim'                                        " Ranger integration in vim and neovim
 Plug 'tpope/vim-fugitive'                                               " A Git wrapper
 Plug 'airblade/vim-gitgutter'                                           " Git diff in the gutter (sign column) and hunks
+Plug 'mhinz/vim-startify'                                               " The fancy start screen for Vim
 
 if has('nvim-0.4') || has('patch-8.1.1967')
     Plug 'rbgrouleff/bclose.vim'                                        " Deleting a buffer without closing the window (needed for Ranger plugin)
