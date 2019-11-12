@@ -131,7 +131,7 @@ set cursorline              " Highlight current line
 set nowrap                  " Wrap/nowrap lines
 set number relativenumber   " Display line numbers
 set signcolumn=yes          " Always show signcolumn
-set updatetime=500          " Update time which the swap file will be written to disk
+set updatetime=400          " Update time which the swap file will be written to disk
 
 set mouse=nv                " Enable mouse support in Normal and Visual mode
 set scrolloff=1             " Always show at least one line above/below the cursor
@@ -159,6 +159,9 @@ endif
 
 " Clear search highlight
 nnoremap <leader>/  :nohlsearch<CR>
+
+" Grep search on word under the cursor
+map <F4> :execute " grep -srnw --binary-files=without-match --exclude-dir=.git . -e " . expand("<cword>") . " " <bar> cwindow<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Copy/Paste/Cut
