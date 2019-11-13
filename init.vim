@@ -96,7 +96,7 @@ if has('termguicolors')
   set termguicolors
 endif
 set background=dark
-colorscheme plastic
+colorscheme edge
 
 " Disable background colors
 "highlight Normal ctermbg=NONE guibg=NONE
@@ -379,4 +379,4 @@ let g:gitgutter_sign_modified_removed = '▌'
 " Explorer Coc-Plugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle explorer
-nnoremap <silent> ge   :CocCommand explorer --toggle<CR>
+nnoremap <silent> ge   :CocCommand explorer --toggle --sources=buffer+,file+ --width=35<CR>
