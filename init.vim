@@ -74,7 +74,7 @@ set shell=/bin/zsh
 " Enables a menu at the bottom of the window
 set wildmenu
 set wildmode=longest,full
-if has('nvim')
+if has('nvim-0.4')
   set wildoptions=pum  " Wild menu display options
 endif
 
