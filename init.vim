@@ -99,11 +99,14 @@ set background=dark
 colorscheme edge
 
 " Disable background colors
-"highlight Normal ctermbg=NONE guibg=NONE
-"highlight LineNr ctermbg=NONE guibg=NONE
-"highlight NonText ctermbg=NONE guibg=NONE
-"highlight SignColumn ctermbg=NONE guibg=NONE
-"let g:gitgutter_override_sign_column_highlight = 0 " Needed for GitGutter
+highlight Normal ctermbg=NONE guibg=NONE
+highlight LineNr ctermbg=NONE guibg=NONE
+highlight NonText ctermbg=NONE guibg=NONE
+highlight SignColumn ctermbg=NONE guibg=NONE
+highlight EndOfBuffer ctermbg=NONE guibg=NONE
+highlight TabLine ctermbg=NONE guibg=NONE
+highlight TabLineFill ctermbg=NONE guibg=NONE
+let g:gitgutter_override_sign_column_highlight = 0 " Needed for GitGutter
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GUI
@@ -250,7 +253,7 @@ nnoremap <silent> <C-o>  :vsplit<CR>:wincmd l<CR>
 let g:netrw_banner = 0        " Do not show netrw banner
 let g:netrw_liststyle = 3     " List style: thin, long, wide, and tree listings
 let g:netrw_browse_split = 4  " Open files in previous window
-let g:netrw_altv = 0          " Open files in right split
+let g:netrw_altv = 1          " Open files in right split
 let g:netrw_winsize = 15      " Initial buffer size in percentage
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -285,7 +288,7 @@ let g:ctrlp_show_hidden =1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Wintabs Plugin                                         (help wintabs-options)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:wintabs_display='tabline'  " Use the status line to display the buffer list
+let g:wintabs_display='none'  " Use the status line to display the buffer list
 let g:wintabs_reverse_order=1       " Add new buffers to the beginning of the wintabs list
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -345,6 +348,8 @@ nnoremap <silent> gw   :call CocAction('workspaceSymbols')<CR>
 nnoremap <silent> <leader>re :call CocAction('rename')<CR>
 " Refactor a symbol
 nnoremap <silent> <leader>rf :call CocAction('refactor')<CR>
+" Format the whole buffer
+nnoremap <leader>ci :call CocAction('format')<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-lsp-cxx-highlight Plugin
