@@ -63,6 +63,8 @@ call plug#end()
 
 " Install new plugins
 nnoremap <leader>pi  :PlugInstall<CR>
+" Install new plugins
+nnoremap <leader>pu  :PlugUpdate<CR>
 " Clean unused plugins
 nnoremap <leader>pc  :PlugClean<CR>
 
