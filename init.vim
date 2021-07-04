@@ -40,9 +40,11 @@ Plug 'francoiscabrol/ranger.vim'                                        " Ranger
 Plug 'tpope/vim-fugitive'                                               " A Git wrapper
 Plug 'airblade/vim-gitgutter'                                           " Git diff in the gutter (sign column) and hunks
 Plug 'mhinz/vim-startify'                                               " The fancy start screen for Vim
+Plug 'junegunn/fzf'                                                     " A command-line fuzzy finder
 
 if has('nvim-0.4') || has('patch-8.1.1967')
     Plug 'rbgrouleff/bclose.vim'                                        " Deleting a buffer without closing the window (needed for Ranger plugin)
+    Plug 'yuki-ycino/fzf-preview.vim'                                   " Resource preview for neovim to handle fzf comfortably
 endif
 
 " Syntax
@@ -50,6 +52,7 @@ Plug 'sheerun/vim-polyglot'                                             " A coll
 Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }                    " i3 syntax highlight
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }        " Enhanced C and C++ syntax highlighting
 Plug 'evedovelli/rst-robotframework-syntax-vim', { 'for': 'rstrobot' }  " Extends RST syntax
+Plug 'nathanalderson/yang.vim'                                          " YANG syntax highlight
 
 " Colorschemes
 Plug 'w0ng/vim-hybrid'                                                  " colorscheme hybrid
@@ -75,7 +78,7 @@ nnoremap <leader>pc  :PlugClean<CR>
 set shell=/bin/zsh
 " Enables a menu at the bottom of the window
 set wildmenu
-set wildmode=longest,full
+set wildmode=longest:full,full
 if has('nvim-0.4')
   set wildoptions=pum  " Wild menu display options
 endif
@@ -101,21 +104,22 @@ set background=dark
 colorscheme edge
 
 " Disable background colors
-highlight Normal ctermbg=NONE guibg=NONE
-highlight LineNr ctermbg=NONE guibg=NONE
-highlight NonText ctermbg=NONE guibg=NONE
-highlight SignColumn ctermbg=NONE guibg=NONE
-highlight EndOfBuffer ctermbg=NONE guibg=NONE
-highlight TabLine ctermbg=NONE guibg=NONE
-highlight TabLineFill ctermbg=NONE guibg=NONE
-let g:gitgutter_override_sign_column_highlight = 0 " Needed for GitGutter
+" highlight Normal ctermbg=NONE guibg=NONE
+" highlight LineNr ctermbg=NONE guibg=NONE
+" highlight NonText ctermbg=NONE guibg=NONE
+" highlight SignColumn ctermbg=NONE guibg=NONE
+" highlight EndOfBuffer ctermbg=NONE guibg=NONE
+" highlight TabLine ctermbg=NONE guibg=NONE
+" highlight TabLineFill ctermbg=NONE guibg=NONE
+" let g:gitgutter_override_sign_column_highlight = 0 " Needed for GitGutter
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GUI
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Small font size
+set guifont=Menlo:h10
+
 if exists('g:fvim_loaded')
-    " Small font size
-    set guifont=DejaVuSansMono\ Nerd\ Font:h13
     " Ctrl-ScrollWheel for zooming in/out
     nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
     nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
@@ -133,6 +137,7 @@ set expandtab       " Use spaces instead of tabs
 " Editing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set cursorline              " Highlight current line
+set colorcolumn=100         " Highlight column 100
 set nowrap                  " Wrap/nowrap lines
 set number relativenumber   " Display line numbers
 set signcolumn=yes          " Always show signcolumn
@@ -148,6 +153,13 @@ set listchars=tab:»·,trail:•
 
 " Toggle relative line numbers
 noremap <silent> <F3>   :set number relativenumber!<CR>
+
+" Jump back to previous or last cursor position
+nnoremap <C-,> <C-o>
+nnoremap <leader>o <C-o>
+" Jump forth to previous or last cursor position
+nnoremap <C-.> <C-i>
+nnoremap <leader>i <C-i>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search/Substitute
@@ -172,6 +184,14 @@ map <F4> :execute " grep -srnw --binary-files=without-match --exclude-dir=.git .
 " Copy/Paste/Cut
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set clipboard=unnamedplus  " Default clipboard register (+ for X Window)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tags
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set tags=./tags;
+if filereadable(expand('./cscope.out'))
+  cs add ./cscope.out
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Buffers
@@ -307,7 +327,7 @@ let g:cpp_concepts_highlight = 1
 " C/C++
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Format with clang-format
-autocmd FileType cpp nnoremap <silent><buffer> <C-m> :w<CR>:silent !clang-format-3.5 -i %<CR>:silent e<CR>
+autocmd FileType cpp nnoremap <silent><buffer> <C-m> :w<CR>:silent !clang-format-6.0 -i %<CR>:silent e<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python
